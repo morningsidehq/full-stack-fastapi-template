@@ -11,6 +11,7 @@ FROM python:3.10-slim as backend-builder
 WORKDIR /app/backend
 COPY backend/pyproject.toml backend/uv.lock ./
 COPY --from=ghcr.io/astral-sh/uv:0.5.11 /uv /uvx /bin/
+RUN python -m venv .venv
 ENV PATH="/app/backend/.venv/bin:$PATH"
 ENV UV_COMPILE_BYTECODE=1
 ENV UV_LINK_MODE=copy
@@ -31,9 +32,10 @@ RUN apt-get update && apt-get install -y \
 # Copy built frontend
 COPY --from=frontend-builder /app/frontend/dist /app/frontend
 
-# Copy backend
+# Copy backend and ensure proper permissions
 COPY --from=backend-builder /app/backend /app/backend
 COPY --from=backend-builder /app/backend/.venv /app/backend/.venv
+RUN chmod -R 755 /app/backend/.venv/bin/*
 
 # Configure nginx
 COPY nginx.conf /etc/nginx/nginx.conf
