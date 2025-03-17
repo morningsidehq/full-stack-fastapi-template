@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 2,
+  "dockerfilePath": "./docker-compose.caprover.yml",
+  "dockerfileLines": [],
+  "env": {
+    "DOCKER_IMAGE_BACKEND": "backend",
+    "DOCKER_IMAGE_FRONTEND": "frontend",
+    "TAG": "latest",
+    "DOMAIN": "crud-app.panel.goingblu.com",
+    "STACK_NAME": "crud-app",
+    "SECRET_KEY": "jaLGM1uvmhp51ojirHY4sH3WD4YMhGqWF8rBEQm17BE",
+    "FIRST_SUPERUSER": "admin@crud-app.panel.goingblu.com",
+    "FIRST_SUPERUSER_PASSWORD": "Hy8#mK9$pL2@vN4&xQ7",
+    "POSTGRES_SERVER": "srv-captain--crud-db",
+    "POSTGRES_PORT": "5432",
+    "POSTGRES_USER": "postgres",
+    "POSTGRES_PASSWORD": "f26131844cfb8be6",
+    "POSTGRES_DB": "postgres",
+    "ENVIRONMENT": "production",
+    "BACKEND_CORS_ORIGINS": "[\"https://dashboard.crud-app.panel.goingblu.com\"]",
+    "FRONTEND_HOST": "https://dashboard.crud-app.panel.goingblu.com"
+  }
+} 
