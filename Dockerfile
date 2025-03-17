@@ -14,11 +14,9 @@ COPY --from=ghcr.io/astral-sh/uv:0.5.11 /uv /uvx /bin/
 ENV PATH="/app/backend/.venv/bin:$PATH"
 ENV UV_COMPILE_BYTECODE=1
 ENV UV_LINK_MODE=copy
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen --no-install-project
+RUN uv sync --frozen --no-install-project
 COPY backend/ .
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync
+RUN uv sync
 
 # Final image
 FROM python:3.10-slim
