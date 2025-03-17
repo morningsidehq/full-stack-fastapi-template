@@ -1,7 +1,12 @@
 {
   "schemaVersion": 2,
-  "dockerfilePath": "./docker-compose.caprover.yml",
-  "dockerfileLines": [],
+  "dockerfileLines": [
+    "FROM alpine:latest",
+    "RUN apk add --no-cache docker-compose",
+    "COPY . /app",
+    "WORKDIR /app",
+    "CMD [\"docker-compose\", \"-f\", \"docker-compose.caprover.yml\", \"up\", \"--build\", \"-d\"]"
+  ],
   "env": {
     "DOCKER_IMAGE_BACKEND": "backend",
     "DOCKER_IMAGE_FRONTEND": "frontend",
